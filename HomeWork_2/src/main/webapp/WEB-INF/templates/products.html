@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+</head>
+<body>
+<table>
+    <tr>
+        <td>Id</td>
+        <td th:text="${product.id}">Id</td>
+    </tr>
+    <tr>
+        <td>Product</td>
+        <td th:text="${product.title}">Product</td>
+    </tr>
+    <tr>
+        <td>Cost</td>
+        <td th:text="${product.cost}">Cost</td>
+    </tr>
+</table>
+</body>
+</html>
