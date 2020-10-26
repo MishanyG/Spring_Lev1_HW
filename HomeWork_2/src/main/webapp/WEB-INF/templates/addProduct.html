@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>addProduct</title>
+</head>
+<body>
+<form th:action="@{/products/new}" th:object="${product}" method="post">
+    <table>
+        <tr>
+            <td>addProduct</td>
+            <td><label>
+                <input type="text" th:field="*{title}"/>
+            </label></td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td><label>
+                <input type="number" th:field="*{cost}"/>
+            </label></td>
+        </tr>
+    </table>
+    <button type="submit">AddProduct</button>
+</form>
+</body>
+</html>
