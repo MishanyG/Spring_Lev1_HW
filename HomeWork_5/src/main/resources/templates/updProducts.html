@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+<div th:insert="~{menu :: #menu}"></div>
+<h1>Update</h1>
+<div th:each="product : ${products}">
+    <div>
+        <h1>Old data</h1>
+        <table>
+            <tr>
+                <th>Id</th>
+                <th>Products</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td><p th:text="${product.id_product}"></p></td>
+                <td><p th:text="${product.name}"></p></td>
+                <td><p th:text="${product.price}"></p></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <form action="#" method="post" th:action="@{/productsUpd}">
+            <h1>Enter new data</h1>
+            <input id="id" name="id" type="number" value="Id" placeholder="Enter ID"><br>
+            <input id="prod" name="prod" type="text" value="Name" placeholder="Enter name"><br>
+            <input id="price" name="price" type="number" value="Price" placeholder="Enter price">
+            <button type="submit">Update product</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
