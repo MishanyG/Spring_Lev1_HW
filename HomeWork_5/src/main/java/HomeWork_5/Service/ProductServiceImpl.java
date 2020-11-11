@@ -65,8 +65,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(ProductDAO productDAO) {
-        Product product = new Product(productDAO.getId_product(), productDAO.getName(), productDAO.getPrice());
+    public void update(Long Id, String Name, Double Price) {
+        Product product = new Product(Id, Name, Price);
         em.merge(product);
     }
 }

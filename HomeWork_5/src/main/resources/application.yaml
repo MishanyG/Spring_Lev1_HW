@@ -1,3 +1,16 @@
 server:
-  servlet:
-    context-path: /app
+  port: 8080
+spring:
+  mvc:
+    static-path-pattern: /statico/**
+  datasource:
+    url: jdbc:postgresql://localhost:5432/Spring_L1HW4
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: mikha
+    platform: org.hibernate.dialect.PostgreSQL10Dialect
+management:
+  endpoints:
+    web:
+      exposure:
+        include: info, health, beans, mappings

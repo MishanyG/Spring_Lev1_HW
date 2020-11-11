@@ -1,6 +1,5 @@
 package HomeWork_5.Controllers;
 
-import HomeWork_5.Service.ProductDAO;
 import HomeWork_5.Service.ProductService;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ProductController {
     private final ProductService productService;
-    private ProductDAO product;
 
     public ProductController(ProductService productService) {
         this.productService = productService;
@@ -64,8 +62,7 @@ public class ProductController {
 
     @RequestMapping(value = "/productsUpd")
     public String updateProduct(@RequestParam("id") Long id, @RequestParam("prod") String name, @RequestParam("price") Double price) {
-        product = new ProductDAO(id, name, price);
-        productService.update(product);
+        productService.update(id, name, price);
         return "redirect:/0";
     }
 

@@ -17,5 +17,5 @@ public interface ProductService {
 
     List <Product> getMinOrMax(Double priceMin, Double priceMax);
 
-    void update(ProductDAO productDAO);
+    void update(Long Id, String Name, Double Price);
 }
