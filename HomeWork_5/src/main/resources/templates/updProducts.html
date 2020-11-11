@@ -26,9 +26,9 @@
     <div>
         <form action="#" method="post" th:action="@{/productsUpd}">
             <h1>Enter new data</h1>
-            <input id="id" name="id" type="number" value="Id" placeholder="Enter ID"><br>
-            <input id="prod" name="prod" type="text" value="Name" placeholder="Enter name"><br>
-            <input id="price" name="price" type="number" value="Price" placeholder="Enter price">
+            <label for="id"></label><input id="id" name="id" type="number" value="Id" placeholder="Enter ID"><br>
+            <label for="prod"></label><input id="prod" name="prod" type="text" placeholder="Enter name"><br>
+            <label for="price"></label><input id="price" name="price" type="number" value="Price" placeholder="Enter price">
             <button type="submit">Update product</button>
         </form>
     </div>
