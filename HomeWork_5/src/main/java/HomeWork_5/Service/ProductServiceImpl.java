@@ -19,6 +19,7 @@ public class ProductServiceImpl implements ProductService {
     @PersistenceContext
     private EntityManager em;
 
+//    private final ProductMapper mapper = ProductMapper.MAPPER;
     private ProductRepository productRepository;
 
     @Autowired
@@ -65,8 +66,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void update(Long Id, String Name, Double Price) {
+    public Product update(Long Id, String Name, Double Price) {
         Product product = new Product(Id, Name, Price);
         em.merge(product);
+        return product;
     }
 }
