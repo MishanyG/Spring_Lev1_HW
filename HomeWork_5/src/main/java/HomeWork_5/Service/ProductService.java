@@ -7,6 +7,19 @@ import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ProductService {
+
+//    Page <ProductDTO> getAll(Pageable pageable);
+//
+//    List <ProductDTO> findById(Long id);
+//
+//    List <ProductDTO> getMin(Double priceHiMin);
+//
+//    List <ProductDTO> getMax(Double priceLoMax);
+//
+//    List <ProductDTO> getMinOrMax(Double priceMin, Double priceMax);
+//
+//    ProductDTO update(Long Id, String Name, Double Price);
+
     Page <Product> getAll(Pageable pageable);
 
     List <Product> findById(Long id);
@@ -17,5 +30,5 @@ public interface ProductService {
 
     List <Product> getMinOrMax(Double priceMin, Double priceMax);
 
-    void update(Long Id, String Name, Double Price);
+    Product update(Long Id, String Name, Double Price);
 }

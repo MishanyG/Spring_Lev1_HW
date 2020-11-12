@@ -1,16 +1,16 @@
 package HomeWork_5.Controllers;
 
+import HomeWork_5.Product;
 import HomeWork_5.Service.ProductService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
+import java.util.List;
+
+@RestController
+@RequestMapping("/app")
 public class ProductController {
     private final ProductService productService;
 
@@ -18,55 +18,48 @@ public class ProductController {
         this.productService = productService;
     }
 
-    @RequestMapping(value = "/{num}", method = RequestMethod.GET)
-    public String list(Model model, @PathVariable("num") int num) {
-        model.addAttribute("products", productService.getAll(PageRequest.of(num, 5, Sort.by("price").ascending())));
-        return "allProducts";
+    @GetMapping("/{num}")
+    public Page <Product> getAll(@PathVariable("num") int num) {
+        return productService.getAll(PageRequest.of(num, 5, Sort.by("price").ascending()));
     }
 
-    @RequestMapping(value = "/next", method = RequestMethod.GET)
-    public String next(Model model) {
-        model.addAttribute("products", productService.getAll(PageRequest.of(0, 5, Sort.by("price").ascending()).next()));
-        return "allProducts";
+    @GetMapping(value = "/next")
+    public Page <Product> next() {
+        return productService.getAll(PageRequest.of(0, 5, Sort.by("price").ascending()).next());
     }
 
-    @RequestMapping(value = "/back", method = RequestMethod.GET)
-    public String back(Model model) {
-        model.addAttribute("products", productService.getAll(PageRequest.of(0, 5, Sort.by("price").ascending()).previous()));
-        return "allProducts";
+    @GetMapping(value = "/back")
+    public Page <Product> back() {
+        return productService.getAll(PageRequest.of(0, 5, Sort.by("price").ascending()).previous());
     }
 
-    @RequestMapping(value = "/>{min}", method = RequestMethod.GET)
-    public String getHiMin(Model model, @PathVariable("min") Double min) {
-        model.addAttribute("products", productService.getMin(min));
-        return "allProducts";
+    @GetMapping(value = "/>{min}")
+    public List <Product> getHiMin(@PathVariable("min") Double min) {
+        return productService.getMin(min);
     }
 
-    @RequestMapping(value = "/<{max}", method = RequestMethod.GET)
-    public String getLoMax(Model model, @PathVariable("max") Double max) {
-        model.addAttribute("products", productService.getMax(max));
-        return "allProducts";
+    @GetMapping(value = "/<{max}")
+    public List <Product> getLoMax(@PathVariable("max") Double max) {
+        return productService.getMax(max);
     }
 
-    @RequestMapping(value = "/products")
-    public String getMinOrMax(Model model, @RequestParam("min") Double min, @RequestParam("max") Double max) {
-        model.addAttribute("products", productService.getMinOrMax(min, max));
-        return "allProducts";
+    @GetMapping(value = "/products")
+    public List <Product> getMinOrMax(@RequestParam("min") Double min, @RequestParam("max") Double max) {
+        return productService.getMinOrMax(min, max);
     }
 
-    @RequestMapping(value = "/editProduct")
-    public String editProduct(Model model, @RequestParam("id") Long id) {
-        model.addAttribute("products", productService.findById(id));
-        return "updProducts";
+    @GetMapping(value = "/editProduct")
+    public List <Product> editProduct(@RequestParam("id") Long id) {
+        return productService.findById(id);
     }
 
-    @RequestMapping(value = "/productsUpd")
-    public String updateProduct(@RequestParam("id") Long id, @RequestParam("prod") String name, @RequestParam("price") Double price) {
+    @PutMapping(value = "/productsUpd")
+    public Product updateProduct(@RequestParam("id") Long id, @RequestParam("prod") String name, @RequestParam("price") Double price) {
         productService.update(id, name, price);
-        return "redirect:/0";
+        return productService.update(id, name, price);
     }
 
-    @RequestMapping(value = "/home", method = RequestMethod.GET)
+    @GetMapping(value = "/home")
     public String home() {
         return "index";
     }

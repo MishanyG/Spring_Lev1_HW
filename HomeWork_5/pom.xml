@@ -85,6 +85,11 @@
             <artifactId>webjars-locator</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct</artifactId>
+            <version>1.4.1.Final</version>
+        </dependency>
     </dependencies>
 
     <build>
