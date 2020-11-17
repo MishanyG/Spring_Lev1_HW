@@ -66,9 +66,8 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product update(Long Id, String Name, Double Price) {
+    public void update(Long Id, String Name, Double Price) {
         Product product = new Product(Id, Name, Price);
         em.merge(product);
-        return product;
     }
 }
