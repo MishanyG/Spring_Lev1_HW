@@ -28,6 +28,9 @@
             <input name="id" id="id" value="${productController.product.setId_product}" type="number" placeholder="Enter ID">
             <button type="submit">Update product</button>
         </form>
+        <form action="#" method="get" th:action="@{/new}">
+            <button type="submit">Add product</button>
+        </form>
     </tr>
 </table>
 </body>

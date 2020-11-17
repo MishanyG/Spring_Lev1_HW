@@ -30,5 +30,5 @@ public interface ProductService {
 
     List <Product> getMinOrMax(Double priceMin, Double priceMax);
 
-    Product update(Long Id, String Name, Double Price);
+    void update(Long Id, String Name, Double Price);
 }

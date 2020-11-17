@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>addProduct</title>
+</head>
+<body>
+<form action="#" method="post" th:action="@{/add}">
+    <h1>Enter new data</h1>
+    <label for="id"></label><input id="id" name="id" placeholder="Enter ID" type="number" value="Id"><br>
+    <label for="prod"></label><input id="prod" name="prod" placeholder="Enter name" type="text"><br>
+    <label for="price"></label><input id="price" name="price" placeholder="Enter price" type="number" value="Price">
+    <button type="submit">Add product</button>
+</form>
+</body>
+</html>
